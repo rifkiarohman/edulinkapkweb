@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <link rel="stylesheet" href="styles.css">
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EDULINK</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+</head>
+<body class="bg-slate-100 dark:bg-slate-900">
+
+    <!-- Auth Pages -->
+    <div id="authContainer">
+        <!-- Halaman Register -->
+        <div id="registerPage" class="auth-page active grid lg:grid-cols-2 h-screen w-full">
+             <div class="flex items-center justify-center bg-slate-50 p-4">
+                <div class="w-full max-w-md bg-white shadow-xl rounded-2xl p-8">
+                    <h1 class="text-3xl font-bold text-gray-800 mb-2">Buat Akun Baru</h1>
+                    <p class="text-slate-500 mb-6">Gabung dan mulai perjalanan belajarmu!</p>
+                    <form onsubmit="event.preventDefault(); showAuthPage('loginPage'); showNotification('Pendaftaran berhasil! Silakan login.', 'success');" class="space-y-4">
+                        <div class="grid grid-cols-2 gap-4">
+                            <div><label class="block text-sm font-medium text-slate-600">Nama Depan</label><input type="text" required class="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500"></div>
+                            <div><label class="block text-sm font-medium text-slate-600">Nama Belakang</label><input type="text" required class="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500"></div>
+                        </div>
+                        <div><label class="block text-sm font-medium text-slate-600">Alamat Email</label><input type="email" required class="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500"></div>
+                        <div><label class="block text-sm font-medium text-slate-600">Buat Sandi</label><input type="password" required class="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500"></div>
+                        <div><label class="block text-sm font-medium text-slate-600">Konfirmasi Sandi</label><input type="password" required class="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500"></div>
+                        <button type="submit" class="w-full bg-sky-500 text-white font-semibold py-3 px-4 rounded-lg hover:bg-sky-600">Daftar</button>
+                    </form>
+                     <p class="text-center text-sm text-slate-500 mt-6">Sudah punya akun? <a href="#" onclick="showAuthPage('loginPage')" class="font-semibold text-sky-500 hover:text-sky-600">Masuk di sini</a></p>
+                </div>
+            </div>
+             <div class="hidden lg:flex flex-col items-center justify-center bg-blue-800 text-white p-12 text-center">
+                 <h1 class="text-6xl font-extrabold tracking-wider">EDULINK</h1>
+                 <p class="mt-4 text-lg text-blue-200">Satu Akun untuk Semua Kebutuhan Belajarmu.</p>
+                 <i data-lucide="rocket" class="w-48 h-48 mt-12 text-blue-600"></i>
+            </div>
+        </div>
+        <!-- Halaman Login -->
+        <div id="loginPage" class="auth-page grid lg:grid-cols-2 h-screen w-full">
+            <div class="hidden lg:flex flex-col items-center justify-center bg-blue-800 text-white p-12 text-center">
+                 <h1 class="text-6xl font-extrabold tracking-wider">EDULINK</h1>
+                 <p class="mt-4 text-lg text-blue-200">Gerbang Menuju Potensi Akademik Terbaikmu.</p>
+                 <i data-lucide="graduation-cap" class="w-48 h-48 mt-12 text-blue-600"></i>
+            </div>
+            <div class="flex items-center justify-center bg-slate-50 p-4">
+                <div class="w-full max-w-md bg-white shadow-xl rounded-2xl p-8">
+                    <h1 class="text-3xl font-bold text-gray-800 mb-2">Selamat Datang Kembali</h1>
+                    <p class="text-slate-500 mb-8">Mulai langkahmu, temukan solusi terbaik.</p>
+                    <form onsubmit="event.preventDefault(); login();" class="space-y-4">
+                        <div>
+                            <label for="login-email" class="block text-sm font-medium text-slate-600">Alamat Email</label>
+                            <input type="email" id="login-email" value="user@edulink.com" required class="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500">
+                        </div>
+                        <div>
+                            <label for="login-password" class="block text-sm font-medium text-slate-600">Kata Sandi</label>
+                            <input type="password" id="login-password" value="password123" required class="mt-1 block w-full px-3 py-2 bg-white border border-slate-300 rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500">
+                        </div>
+                        <button type="submit" class="w-full bg-sky-500 text-white font-semibold py-3 px-4 rounded-lg hover:bg-sky-600 transition-transform hover:scale-[1.02]">Masuk</button>
+                    </form>
+                    <p class="text-center text-sm text-slate-500 mt-6">
+                        Belum punya akun? <a href="#" onclick="showAuthPage('registerPage')" class="font-semibold text-sky-500 hover:text-sky-600">Daftar di sini</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- App Wrapper -->
+    <div id="app-wrapper" class="flex h-screen hidden">
+        <!-- Sidebar -->
+        <nav class="w-64 bg-white dark:bg-slate-800 shadow-lg flex-col hidden md:flex transition-colors">
+            <div class="p-6 text-center border-b dark:border-slate-700"><h1 class="text-3xl font-extrabold tracking-wider text-blue-800 dark:text-white">EDULINK</h1></div>
+            <div class="flex-grow p-4 space-y-2">
+                <a href="#" onclick="showPage('berandaPage', this)" class="sidebar-link flex items-center p-3 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-sky-100 dark:hover:bg-slate-700 transition-colors active"><i data-lucide="layout-dashboard" class="w-5 h-5 mr-3 text-slate-500 dark:text-slate-400"></i> Beranda</a>
+                <a href="#" onclick="showPage('chatPage', this)" class="sidebar-link flex items-center p-3 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-sky-100 dark:hover:bg-slate-700 transition-colors"><i data-lucide="message-circle" class="w-5 h-5 mr-3 text-slate-500 dark:text-slate-400"></i> Chat</a>
+                <a href="#" onclick="showPage('langgananPage', this)" class="sidebar-link flex items-center p-3 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-sky-100 dark:hover:bg-slate-700 transition-colors"><i data-lucide="gem" class="w-5 h-5 mr-3 text-slate-500 dark:text-slate-400"></i> Langganan</a>
+                <a href="#" onclick="showPage('promoPage', this)" class="sidebar-link flex items-center p-3 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-sky-100 dark:hover:bg-slate-700 transition-colors"><i data-lucide="ticket" class="w-5 h-5 mr-3 text-slate-500 dark:text-slate-400"></i> Promo</a>
+                <a href="#" onclick="showPage('favoritPage', this)" class="sidebar-link flex items-center p-3 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-sky-100 dark:hover:bg-slate-700 transition-colors"><i data-lucide="heart" class="w-5 h-5 mr-3 text-slate-500 dark:text-slate-400"></i> Favorit</a>
+                <a href="#" onclick="showPage('rewardPage', this)" class="sidebar-link flex items-center p-3 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-sky-100 dark:hover:bg-slate-700 transition-colors"><i data-lucide="star" class="w-5 h-5 mr-3 text-slate-500 dark:text-slate-400"></i> Poin & Hadiah</a>
+                <a href="#" onclick="showPage('kuisionerPage', this)" class="sidebar-link flex items-center p-3 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-sky-100 dark:hover:bg-slate-700 transition-colors"><i data-lucide="clipboard-list" class="w-5 h-5 mr-3 text-slate-500 dark:text-slate-400"></i> Isi Kuisioner</a>
+                <a href="#" onclick="showPage('mentorRegisterPage', this)" class="sidebar-link flex items-center p-3 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-sky-100 dark:hover:bg-slate-700 transition-colors"><i data-lucide="user-plus" class="w-5 h-5 mr-3 text-slate-500 dark:text-slate-400"></i> Daftar Jadi Mentor</a>
+                <a href="#" onclick="showPage('mentorDashboardPage', this)" class="sidebar-link flex items-center p-3 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-sky-100 dark:hover:bg-slate-700 transition-colors"><i data-lucide="bar-chart-3" class="w-5 h-5 mr-3 text-slate-500 dark:text-slate-400"></i> Dashboard Mentor</a>
+                <a href="#" onclick="showPage('faqPage', this)" class="sidebar-link flex items-center p-3 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-sky-100 dark:hover:bg-slate-700 transition-colors"><i data-lucide="help-circle" class="w-5 h-5 mr-3 text-slate-500 dark:text-slate-400"></i> FAQ</a>
+            </div>
+            <div class="p-4 border-t dark:border-slate-700"><a href="#" onclick="logout()" class="flex items-center p-3 rounded-lg text-slate-600 dark:text-slate-300 hover:bg-red-50 dark:hover:bg-red-900/20 transition-colors"><i data-lucide="log-out" class="w-5 h-5 mr-3 text-red-500"></i> Logout</a></div>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-8 overflow-y-auto main-content transition-colors">
+            <div id="berandaPage" class="page active">
+                 <div class="flex justify-between items-center mb-8">
+                    <h1 class="text-3xl font-bold text-gray-800 dark:text-white">Selamat Datang, Dewan Juri Terhormat!</h1>
+                    <div class="flex items-center gap-4">
+                         <div class="bg-amber-100 text-amber-800 font-bold flex items-center gap-2 px-4 py-2 rounded-full">
+                            <i data-lucide="star" class="w-5 h-5"></i>
+                            <span id="userPoints">1,250 Poin</span>
+                        </div>
+                        <button id="theme-toggle" type="button" class="text-slate-500 dark:text-slate-400 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-full text-sm p-2.5">
+                            <i data-lucide="moon" id="theme-toggle-dark-icon" class="w-5 h-5 hidden"></i>
+                            <i data-lucide="sun" id="theme-toggle-light-icon" class="w-5 h-5 hidden"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div onclick="setupFeaturePage('consulink')" class="feature-card bg-white dark:bg-slate-800 p-6 rounded-xl text-center cursor-pointer border dark:border-slate-700"><div class="bg-emerald-100 dark:bg-emerald-900/50 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4"><i data-lucide="messages-square" class="w-10 h-10 text-emerald-500"></i></div><h3 class="text-xl font-bold text-blue-800 dark:text-white">Consulink</h3></div>
+                    <div onclick="setupFeaturePage('paperlink')" class="feature-card bg-white dark:bg-slate-800 p-6 rounded-xl text-center cursor-pointer border dark:border-slate-700"><div class="bg-violet-100 dark:bg-violet-900/50 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4"><i data-lucide="file-text" class="w-10 h-10 text-violet-500"></i></div><h3 class="text-xl font-bold text-blue-800 dark:text-white">Paperlink</h3></div>
+                    <div onclick="setupFeaturePage('courselink')" class="feature-card bg-white dark:bg-slate-800 p-6 rounded-xl text-center cursor-pointer border dark:border-slate-700"><div class="bg-amber-100 dark:bg-amber-900/50 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4"><i data-lucide="book-open" class="w-10 h-10 text-amber-500"></i></div><h3 class="text-xl font-bold text-blue-800 dark:text-white">Courselink</h3></div>
+                    <div onclick="setupFeaturePage('complink')" class="feature-card bg-white dark:bg-slate-800 p-6 rounded-xl text-center cursor-pointer border dark:border-slate-700"><div class="bg-rose-100 dark:bg-rose-900/50 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4"><i data-lucide="trophy" class="w-10 h-10 text-rose-500"></i></div><h3 class="text-xl font-bold text-blue-800 dark:text-white">Complink</h3></div>
+                    <div onclick="showPage('sourcelinkPage', this)" class="feature-card bg-white dark:bg-slate-800 p-6 rounded-xl text-center cursor-pointer border dark:border-slate-700 lg:col-span-1 sm:col-span-2 lg:col-start-2">
+                        <div class="bg-teal-100 dark:bg-teal-900/50 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4"><i data-lucide="users" class="w-10 h-10 text-teal-500"></i></div>
+                        <h3 class="text-xl font-bold text-blue-800 dark:text-white">Sourcelink</h3>
+                    </div>
+                </div>
+                 <div id="hot-services-container" class="mt-10 bg-white dark:bg-slate-800 dark:border-slate-700 p-6 rounded-xl border"></div>
+                 <div id="testimonials-container" class="mt-10"></div>
+            </div>
+
+            <div id="chatPage" class="page">
+                <h1 class="text-3xl font-bold text-gray-800 dark:text-white mb-6">Riwayat Chat Mentor</h1>
+                <div class="bg-white dark:bg-slate-800 dark:border-slate-700 p-6 rounded-xl border space-y-4">
+                    <div onclick="showNotification('Layanan chat dengan mentor ini telah berakhir', 'info')" class="flex items-center p-3 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-700 cursor-pointer"><img src="https://placehold.co/48x48/fecaca/b91c1c?text=A" class="rounded-full w-12 h-12 mr-4"><div class="flex-grow"><p class="font-semibold dark:text-white">Anisa Putri</p><p class="text-sm text-slate-500 dark:text-slate-400">Bisa tolong review bagian pendahuluan...</p></div><span class="text-xs text-slate-400 dark:text-slate-500">2 hari lalu</span></div>
+                    <div onclick="showNotification('Layanan chat dengan mentor ini telah berakhir', 'info')" class="flex items-center p-3 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-700 cursor-pointer"><img src="https://placehold.co/48x48/bae6fd/1e3a8a?text=B" class="rounded-full w-12 h-12 mr-4"><div class="flex-grow"><p class="font-semibold dark:text-white">Budi Santoso</p><p class="text-sm text-slate-500 dark:text-slate-400">Oke, terima kasih atas bantuannya!</p></div><span class="text-xs text-slate-400 dark:text-slate-500">5 hari lalu</span></div>
+                    <div onclick="showNotification('Layanan chat dengan mentor ini telah berakhir', 'info')" class="flex items-center p-3 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-700 cursor-pointer"><img src="https://placehold.co/48x48/d8b4fe/7e22ce?text=C" class="rounded-full w-12 h-12 mr-4"><div class="flex-grow"><p class="font-semibold dark:text-white">Citra Lestari</p><p class="text-sm text-slate-500 dark:text-slate-400">Untuk soal ONMIPA, kita bisa mulai...</p></div><span class="text-xs text-slate-400 dark:text-slate-500">1 minggu lalu</span></div>
+                    <div onclick="showNotification('Layanan chat dengan mentor ini telah berakhir', 'info')" class="flex items-center p-3 rounded-lg hover:bg-slate-50 dark:hover:bg-slate-700 cursor-pointer"><img src="https://placehold.co/48x48/a5f3fc/0e7490?text=D" class="rounded-full w-12 h-12 mr-4"><div class="flex-grow"><p class="font-semibold dark:text-white">Dewi Anggraini</p><p class="text-sm text-slate-500 dark:text-slate-400">Tentu, saya siap membantu soal manajemen...</p></div><span class="text-xs text-slate-400 dark:text-slate-500">2 minggu lalu</span></div>
+                </div>
+            </div>
+
+            <div id="langgananPage" class="page">
+                 <h1 class="text-3xl font-bold text-gray-800 dark:text-white mb-2">Paket Langganan</h1>
+                <p class="text-slate-500 dark:text-slate-400 mb-6">Pilih paket terbaik untuk memaksimalkan potensimu!</p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 rounded-xl p-6 text-center flex flex-col"><h3 class="text-xl font-bold dark:text-white">Paket Hemat</h3><p class="text-sm text-slate-500 dark:text-slate-400 mb-4">5x Transaksi (Fitur Consulink)</p><p class="text-lg font-medium text-slate-400 dark:text-slate-500 line-through">Rp 35.000</p><p class="text-4xl font-extrabold text-blue-800 dark:text-white mb-6">Rp 25.000</p><button onclick="showPaymentPage({type: 'Paket', name: 'Paket Hemat', price: '25000'})" class="mt-auto w-full bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-200 font-semibold py-2 px-4 rounded-lg hover:bg-slate-300 dark:hover:bg-slate-600">Pilih Paket</button></div>
+                    <div class="border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 rounded-xl p-6 text-center flex flex-col"><h3 class="text-xl font-bold dark:text-white">Paket Sultan</h3><p class="text-sm text-slate-500 dark:text-slate-400 mb-4">5x Transaksi (Fitur Paperlink)</p><p class="text-lg font-medium text-slate-400 dark:text-slate-500 line-through">Rp 100.000</p><p class="text-4xl font-extrabold text-blue-800 dark:text-white mb-6">Rp 90.000</p><button onclick="showPaymentPage({type: 'Paket', name: 'Paket Sultan', price: '90000'})" class="mt-auto w-full bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-200 font-semibold py-2 px-4 rounded-lg hover:bg-slate-300 dark:hover:bg-slate-600">Pilih Paket</button></div>
+                    <div class="border-2 border-sky-500 bg-white dark:bg-slate-800 rounded-xl p-6 text-center relative flex flex-col"><div class="absolute top-0 -translate-y-1/2 left-1/2 -translate-x-1/2 bg-sky-500 text-white text-xs font-bold px-3 py-1 rounded-full">PALING LARIS</div><h3 class="text-xl font-bold dark:text-white">Paket Puas</h3><p class="text-sm text-slate-500 dark:text-slate-400 mb-4">5x Transaksi (Fitur Courselink Privat)</p><p class="text-lg font-medium text-slate-400 dark:text-slate-500 line-through">Rp 125.000</p><p class="text-4xl font-extrabold text-blue-800 dark:text-white mb-6">Rp 110.000</p><button onclick="showPaymentPage({type: 'Paket', name: 'Paket Puas', price: '110000'})" class="mt-auto w-full bg-sky-500 text-white font-semibold py-2 px-4 rounded-lg hover:bg-sky-600">Pilih Paket</button></div>
+                    <div class="border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 rounded-xl p-6 text-center flex flex-col"><h3 class="text-xl font-bold dark:text-white">Paket Sultan</h3><p class="text-sm text-slate-500 dark:text-slate-400 mb-4">5x Transaksi (Fitur Courselink Kolektif)</p><p class="text-lg font-medium text-slate-400 dark:text-slate-500 line-through">Rp 50.000</p><p class="text-4xl font-extrabold text-blue-800 dark:text-white mb-6">Rp 40.000</p><button onclick="showPaymentPage({type: 'Paket', name: 'Paket Sultan', price: '40000'})" class="mt-auto w-full bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-200 font-semibold py-2 px-4 rounded-lg hover:bg-slate-300 dark:hover:bg-slate-600">Pilih Paket</button></div>
+                    <div class="border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 rounded-xl p-6 text-center flex flex-col"><h3 class="text-xl font-bold dark:text-white">Paket Hemat</h3><p class="text-sm text-slate-500 dark:text-slate-400 mb-4">5x Transaksi (Fitur Complink Privat)</p><p class="text-lg font-medium text-slate-400 dark:text-slate-500 line-through">Rp 100.000</p><p class="text-4xl font-extrabold text-blue-800 dark:text-white mb-6">Rp 90.000</p><button onclick="showPaymentPage({type: 'Paket', name: 'Paket Hemat', price: '90000'})" class="mt-auto w-full bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-200 font-semibold py-2 px-4 rounded-lg hover:bg-slate-300 dark:hover:bg-slate-600">Pilih Paket</button></div>
+                    <div class="border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 rounded-xl p-6 text-center flex flex-col"><h3 class="text-xl font-bold dark:text-white">Paket Sultan</h3><p class="text-sm text-slate-500 dark:text-slate-400 mb-4">5x Transaksi (Fitur Complink Kolektif)</p><p class="text-lg font-medium text-slate-400 dark:text-slate-500 line-through">Rp 35.000</p><p class="text-4xl font-extrabold text-blue-800 dark:text-white mb-6">Rp 25.000</p><button onclick="showPaymentPage({type: 'Paket', name: 'Paket Sultan', price: '25000'})" class="mt-auto w-full bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-200 font-semibold py-2 px-4 rounded-lg hover:bg-slate-300 dark:hover:bg-slate-600">Pilih Paket</button></div>
+                    <div class="border-2 border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 rounded-xl p-6 text-center flex flex-col"><h3 class="text-xl font-bold dark:text-white">Paket Sultan</h3><p class="text-sm text-slate-500 dark:text-slate-400 mb-4">5x Transaksi (Fitur Sourcelink)</p><p class="text-lg font-medium text-slate-400 dark:text-slate-500 line-through">Rp 150.000</p><p class="text-4xl font-extrabold text-blue-800 dark:text-white mb-6">Rp 140.000</p><button onclick="showPaymentPage({type: 'Paket', name: 'Paket Sultan', price: '140000'})" class="mt-auto w-full bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-200 font-semibold py-2 px-4 rounded-lg hover:bg-slate-300 dark:hover:bg-slate-600">Pilih Paket</button></div>
+                </div>
+            </div>
+
+            <div id="promoPage" class="page">
+                <h1 class="text-3xl font-bold text-gray-800 dark:text-white mb-6">Promo Spesial Untukmu</h1>
+                <div class="space-y-6">
+                    <div class="bg-gradient-to-r from-blue-800 to-sky-500 text-white p-8 rounded-xl flex justify-between items-center"><div><h3 class="text-2xl font-bold">Diskon Pengguna Pertama!</h3><p class="opacity-80">Dapatkan potongan 50% untuk transaksi pertamamu.</p></div><button onclick="showNotification('Diskon didapatkan!', 'success')" class="bg-white text-blue-800 font-bold py-2 px-6 rounded-lg">Klaim</button></div>
+                    <div class="bg-white dark:bg-slate-800 border dark:border-slate-700 p-6 rounded-xl flex justify-between items-center"><div><h3 class="text-xl font-bold dark:text-white">Ajak Teman, Dapat Cuan!</h3><p class="text-slate-500 dark:text-slate-400">Bagikan kode referral dan dapatkan diskon 25%.</p></div><button onclick="openShareModal()" class="bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-200 font-semibold py-2 px-4 rounded-lg hover:bg-slate-300 dark:hover:bg-slate-600">Bagikan</button></div>
+                    <div class="bg-white dark:bg-slate-800 border dark:border-slate-700 p-6 rounded-xl flex justify-between items-center"><div><h3 class="text-xl font-bold dark:text-white">Promo Hari Pendidikan</h3><p class="text-slate-500 dark:text-slate-400">Diskon 20% untuk semua layanan Paperlink. Terbatas!</p></div><button onclick="showNotification('Promo berhasil diklaim!', 'success')" class="bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-200 font-semibold py-2 px-4 rounded-lg hover:bg-slate-300 dark:hover:bg-slate-600">Klaim</button></div>
+                    <div class="bg-white dark:bg-slate-800 border dark:border-slate-700 p-6 rounded-xl flex justify-between items-center"><div><h3 class="text-xl font-bold dark:text-white">Cashback E-Wallet</h3><p class="text-slate-500 dark:text-slate-400">Dapatkan cashback 10% untuk pembayaran via GoPay/OVO.</p></div><button onclick="showPage('promoDetailPage')" class="bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-200 font-semibold py-2 px-4 rounded-lg hover:bg-slate-300 dark:hover:bg-slate-600">Lihat Detail</button></div>
+                </div>
+            </div>
+
+            <div id="favoritPage" class="page">
+                <h1 class="text-3xl font-bold text-gray-800 dark:text-white mb-6">Mentor Favorit</h1>
+                <div id="favoriteMentorList" class="space-y-4">
+                    <div class="bg-white dark:bg-slate-800 p-12 rounded-xl border dark:border-slate-700 text-center"><i data-lucide="folder-heart" class="w-16 h-16 mx-auto text-slate-300 dark:text-slate-600 mb-4"></i><h3 class="text-xl font-semibold dark:text-white">Belum Ada Favorit</h3><p class="text-slate-500 dark:text-slate-400 mt-1">Tandai mentor yang kamu sukai untuk akses lebih cepat!</p></div>
+                </div>
+            </div>
+
+             <div id="rewardPage" class="page">
+                <h1 class="text-3xl font-bold text-gray-800 dark:text-white mb-2">Poin & Hadiah</h1>
+                <p class="text-slate-500 dark:text-slate-400 mb-6">Tukarkan poin yang kamu kumpulkan dengan hadiah menarik!</p>
+                <div class="bg-gradient-to-r from-amber-400 to-yellow-500 text-white p-6 rounded-xl mb-8 flex justify-between items-center">
+                    <div>
+                        <p class="text-sm opacity-80">Total Poin Kamu</p>
+                        <p class="text-4xl font-bold">1,250</p>
+                    </div>
+                    <i data-lucide="gift" class="w-12 h-12 opacity-50"></i>
+                </div>
+                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <div class="bg-white dark:bg-slate-800 p-5 rounded-xl border dark:border-slate-700">
+                        <h3 class="font-bold dark:text-white">Diskon 10% Consulink</h3>
+                        <p class="text-sm text-slate-500 dark:text-slate-400">Gunakan untuk 1x sesi Consulink</p>
+                        <div class="flex justify-between items-center mt-4">
+                            <span class="font-bold text-amber-600">500 Poin</span>
+                            <button onclick="showNotification('Hadiah berhasil ditukar!', 'success')" class="bg-amber-500 text-white text-sm font-semibold py-1 px-3 rounded-md">Tukar</button>
+                        </div>
+                    </div>
+                     <div class="bg-white dark:bg-slate-800 p-5 rounded-xl border dark:border-slate-700">
+                        <h3 class="font-bold dark:text-white">Potongan Rp 5.000</h3>
+                        <p class="text-sm text-slate-500 dark:text-slate-400">Berlaku untuk semua layanan</p>
+                        <div class="flex justify-between items-center mt-4">
+                            <span class="font-bold text-amber-600">1000 Poin</span>
+                            <button onclick="showNotification('Hadiah berhasil ditukar!', 'success')" class="bg-amber-500 text-white text-sm font-semibold py-1 px-3 rounded-md">Tukar</button>
+                        </div>
+                    </div>
+                     <div class="bg-white dark:bg-slate-800 p-5 rounded-xl border dark:border-slate-700">
+                        <h3 class="font-bold dark:text-white">Gratis 1x Sesi Complink</h3>
+                        <p class="text-sm text-slate-500 dark:text-slate-400">Mentoring lomba (maks. 1 jam)</p>
+                        <div class="flex justify-between items-center mt-4">
+                            <span class="font-bold text-amber-600">2500 Poin</span>
+                            <button class="bg-slate-200 dark:bg-slate-700 text-slate-500 dark:text-slate-400 text-sm font-semibold py-1 px-3 rounded-md cursor-not-allowed">Poin Kurang</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+             <div id="kuisionerPage" class="page">
+                <h1 class="text-3xl font-bold text-gray-800 dark:text-white mb-2">Isi Kuisioner</h1>
+                <p class="text-slate-500 dark:text-slate-400 mb-6">Bantu penelitian dan dapatkan hadiah menarik!</p>
+                <div class="space-y-4">
+                    <div class="bg-white dark:bg-slate-800 p-5 rounded-xl border dark:border-slate-700 flex justify-between items-center">
+                        <div><h3 class="font-bold dark:text-white">Pengaruh Media Sosial Terhadap Minat Belajar Mahasiswa</h3><p class="text-sm text-slate-500 dark:text-slate-400">Penelitian oleh Universitas Gadjah Mada</p></div>
+                        <div class="text-right"><p class="font-semibold text-green-600 dark:text-green-400">Reward: Rp 100</p><button onclick="showNotification('Membuka kuisioner...','info')" class="text-sm font-semibold text-sky-600 dark:text-sky-400 mt-1">Mulai Isi</button></div>
+                    </div>
+                    <div class="bg-white dark:bg-slate-800 p-5 rounded-xl border dark:border-slate-700 flex justify-between items-center">
+                        <div><h3 class="font-bold dark:text-white">Analisis Pola Tidur dan Tingkat Stres pada Pekerja Remote</h3><p class="text-sm text-slate-500 dark:text-slate-400">Penelitian oleh Fakultas Psikologi UI</p></div>
+                        <div class="text-right"><p class="font-semibold text-green-600 dark:text-green-400">Reward: Rp 120</p><button onclick="showNotification('Membuka kuisioner...','info')" class="text-sm font-semibold text-sky-600 dark:text-sky-400 mt-1">Mulai Isi</button></div>
+                    </div>
+                     <div class="bg-white dark:bg-slate-800 p-5 rounded-xl border dark:border-slate-700 flex justify-between items-center">
+                        <div><h3 class="font-bold dark:text-white">Preferensi Konsumen Terhadap Produk Ramah Lingkungan</h3><p class="text-sm text-slate-500 dark:text-slate-400">Riset oleh Startup Greenly</p></div>
+                        <div class="text-right"><p class="font-semibold text-green-600 dark:text-green-400">Reward: Rp 110</p><button onclick="showNotification('Membuka kuisioner...','info')" class="text-sm font-semibold text-sky-600 dark:text-sky-400 mt-1">Mulai Isi</button></div>
+                    </div>
+                    <div class="bg-white dark:bg-slate-800 p-5 rounded-xl border dark:border-slate-700 flex justify-between items-center">
+                        <div><h3 class="font-bold dark:text-white">Dampak Penggunaan E-Wallet di Kalangan Generasi Z</h3><p class="text-sm text-slate-500 dark:text-slate-400">Penelitian oleh Institut Teknologi Bandung</p></div>
+                        <div class="text-right"><p class="font-semibold text-green-600 dark:text-green-400">Reward: Rp 115</p><button onclick="showNotification('Membuka kuisioner...','info')" class="text-sm font-semibold text-sky-600 dark:text-sky-400 mt-1">Mulai Isi</button></div>
+                    </div>
+                    <div class="bg-white dark:bg-slate-800 p-5 rounded-xl border dark:border-slate-700 flex justify-between items-center">
+                        <div><h3 class="font-bold dark:text-white">Studi Kelayakan Bisnis Coffee Shop di Area Urban</h3><p class="text-sm text-slate-500 dark:text-slate-400">Riset oleh Universitas Brawijaya</p></div>
+                        <div class="text-right"><p class="font-semibold text-green-600 dark:text-green-400">Reward: Rp 105</p><button onclick="showNotification('Membuka kuisioner...','info')" class="text-sm font-semibold text-sky-600 dark:text-sky-400 mt-1">Mulai Isi</button></div>
+                    </div>
+                    <div class="bg-white dark:bg-slate-800 p-5 rounded-xl border dark:border-slate-700 flex justify-between items-center">
+                        <div><h3 class="font-bold dark:text-white">Persepsi Mahasiswa Terhadap Pembelajaran Daring</h3><p class="text-sm text-slate-500 dark:text-slate-400">Penelitian oleh Universitas Negeri Yogyakarta</p></div>
+                        <div class="text-right"><p class="font-semibold text-green-600 dark:text-green-400">Reward: Rp 100</p><button onclick="showNotification('Membuka kuisioner...','info')" class="text-sm font-semibold text-sky-600 dark:text-sky-400 mt-1">Mulai Isi</button></div>
+                    </div>
+                    <div class="bg-white dark:bg-slate-800 p-5 rounded-xl border dark:border-slate-700 flex justify-between items-center">
+                        <div><h3 class="font-bold dark:text-white">Efektivitas Iklan di Platform Streaming Video</h3><p class="text-sm text-slate-500 dark:text-slate-400">Riset oleh Agensi Pemasaran Digital</p></div>
+                        <div class="text-right"><p class="font-semibold text-green-600 dark:text-green-400">Reward: Rp 120</p><button onclick="showNotification('Membuka kuisioner...','info')" class="text-sm font-semibold text-sky-600 dark:text-sky-400 mt-1">Mulai Isi</button></div>
+                    </div>
+                    <div class="bg-white dark:bg-slate-800 p-5 rounded-xl border dark:border-slate-700 flex justify-between items-center">
+                        <div><h3 class="font-bold dark:text-white">Hubungan Antara Aktivitas Fisik dan Kesehatan Mental</h3><p class="text-sm text-slate-500 dark:text-slate-400">Penelitian oleh Fakultas Kedokteran Unpad</p></div>
+                        <div class="text-right"><p class="font-semibold text-green-600 dark:text-green-400">Reward: Rp 110</p><button onclick="showNotification('Membuka kuisioner...','info')" class="text-sm font-semibold text-sky-600 dark:text-sky-400 mt-1">Mulai Isi</button></div>
+                    </div>
+                    <div class="bg-white dark:bg-slate-800 p-5 rounded-xl border dark:border-slate-700 flex justify-between items-center">
+                        <div><h3 class="font-bold dark:text-white">Minat Baca Buku Fisik di Era Digital</h3><p class="text-sm text-slate-500 dark:text-slate-400">Penelitian oleh Komunitas Literasi Nasional</p></div>
+                        <div class="text-right"><p class="font-semibold text-green-600 dark:text-green-400">Reward: Rp 100</p><button onclick="showNotification('Membuka kuisioner...','info')" class="text-sm font-semibold text-sky-600 dark:text-sky-400 mt-1">Mulai Isi</button></div>
+                    </div>
+                    <div class="bg-white dark:bg-slate-800 p-5 rounded-xl border dark:border-slate-700 flex justify-between items-center">
+                        <div><h3 class="font-bold dark:text-white">Penggunaan Transportasi Publik vs. Kendaraan Pribadi</h3><p class="text-sm text-slate-500 dark:text-slate-400">Survei oleh Dinas Perhubungan Kota</p></div>
+                        <div class="text-right"><p class="font-semibold text-green-600 dark:text-green-400">Reward: Rp 115</p><button onclick="showNotification('Membuka kuisioner...','info')" class="text-sm font-semibold text-sky-600 dark:text-sky-400 mt-1">Mulai Isi</button></div>
+                    </div>
+                    <div class="bg-white dark:bg-slate-800 p-5 rounded-xl border dark:border-slate-700 flex justify-between items-center">
+                        <div><h3 class="font-bold dark:text-white">Perilaku Belanja Online Selama Periode Diskon</h3><p class="text-sm text-slate-500 dark:text-slate-400">Riset oleh Asosiasi E-commerce Indonesia</p></div>
+                        <div class="text-right"><p class="font-semibold text-green-600 dark:text-green-400">Reward: Rp 120</p><button onclick="showNotification('Membuka kuisioner...','info')" class="text-sm font-semibold text-sky-600 dark:text-sky-400 mt-1">Mulai Isi</button></div>
+                    </div>
+                    <div class="bg-white dark:bg-slate-800 p-5 rounded-xl border dark:border-slate-700 flex justify-between items-center">
+                        <div><h3 class="font-bold dark:text-white">Tingkat Kepuasan Pengguna Aplikasi Mobile Banking</h3><p class="text-sm text-slate-500 dark:text-slate-400">Survei Internal Bank ABC</p></div>
+                        <div class="text-right"><p class="font-semibold text-green-600 dark:text-green-400">Reward: Rp 100</p><button onclick="showNotification('Membuka kuisioner...','info')" class="text-sm font-semibold text-sky-600 dark:text-sky-400 mt-1">Mulai Isi</button></div>
+                    </div>
+                    <div class="bg-white dark:bg-slate-800 p-5 rounded-xl border dark:border-slate-700 flex justify-between items-center">
+                        <div><h3 class="font-bold dark:text-white">Gaya Hidup Minimalis di Kalangan Milenial</h3><p class="text-sm text-slate-500 dark:text-slate-400">Penelitian Sosiologi Universitas Airlangga</p></div>
+                        <div class="text-right"><p class="font-semibold text-green-600 dark:text-green-400">Reward: Rp 110</p><button onclick="showNotification('Membuka kuisioner...','info')" class="text-sm font-semibold text-sky-600 dark:text-sky-400 mt-1">Mulai Isi</button></div>
+                    </div>
+                     <div class="bg-white dark:bg-slate-800 p-5 rounded-xl border dark:border-slate-700 flex justify-between items-center">
+                        <div><h3 class="font-bold dark:text-white">Kebutuhan Fitur Baru pada Aplikasi Streaming Musik</h3><p class="text-sm text-slate-500 dark:text-slate-400">Riset UX oleh Tim Produk NadaStream</p></div>
+                        <div class="text-right"><p class="font-semibold text-green-600 dark:text-green-400">Reward: Rp 105</p><button onclick="showNotification('Membuka kuisioner...','info')" class="text-sm font-semibold text-sky-600 dark:text-sky-400 mt-1">Mulai Isi</button></div>
+                    </div>
+                     <div class="bg-white dark:bg-slate-800 p-5 rounded-xl border dark:border-slate-700 flex justify-between items-center">
+                        <div><h3 class="font-bold dark:text-white">Pola Konsumsi Kopi di kalangan Mahasiswa Akhir</h3><p class="text-sm text-slate-500 dark:text-slate-400">Penelitian oleh IPB University</p></div>
+                        <div class="text-right"><p class="font-semibold text-green-600 dark:text-green-400">Reward: Rp 110</p><button onclick="showNotification('Membuka kuisioner...','info')" class="text-sm font-semibold text-sky-600 dark:text-sky-400 mt-1">Mulai Isi</button></div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="sourcelinkPage" class="page">
+                <div id="sourcelinkStep1">
+                    <h1 class="text-3xl font-bold text-gray-800 dark:text-white">Cari Responden (Sourcelink)</h1>
+                    <p class="text-slate-500 dark:text-slate-400 mb-6">Tentukan kriteria responden yang Anda butuhkan untuk penelitian Anda.</p>
+                    <div class="bg-white dark:bg-slate-800 p-8 rounded-xl border dark:border-slate-700">
+                        <form id="sourcelinkCriteriaForm" class="space-y-6">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div><label class="block text-sm font-medium text-slate-600 dark:text-slate-300">Rentang Usia</label><select class="form-select mt-1 block w-full px-3 py-2 bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-md shadow-sm dark:text-white"><option>17-20 tahun</option><option>21-25 tahun</option><option>26-30 tahun</option><option>31-40 tahun</option><option>40+ tahun</option></select></div>
+                                <div><label class="block text-sm font-medium text-slate-600 dark:text-slate-300">Jenis Kelamin</label><select class="form-select mt-1 block w-full px-3 py-2 bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-md shadow-sm dark:text-white"><option>Semua</option><option>Laki-laki</option><option>Perempuan</option></select></div>
+                                <div><label class="block text-sm font-medium text-slate-600 dark:text-slate-300">Tingkat Penghasilan</label><select class="form-select mt-1 block w-full px-3 py-2 bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-md shadow-sm dark:text-white"><option>&lt; Rp 3.000.000</option><option>Rp 3.000.000 - Rp 5.000.000</option><option>Rp 5.000.000 - Rp 10.000.000</option><option>&gt; Rp 10.000.000</option><option>Tidak Berpenghasilan / Pelajar</option></select></div>
+                                <div><label class="block text-sm font-medium text-slate-600 dark:text-slate-300">Pendidikan Terakhir</label><select class="form-select mt-1 block w-full px-3 py-2 bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-md shadow-sm dark:text-white"><option>Semua</option><option>SMA/Sederajat</option><option>Diploma (D1/D2/D3)</option><option>Sarjana (S1)</option><option>Magister/Doktor (S2/S3)</option></select></div>
+                            </div>
+                            <div><label class="block text-sm font-medium text-slate-600 dark:text-slate-300">Kriteria Lainnya (Opsional)</label><textarea placeholder="Contoh: Mahasiswa aktif, berdomisili di Jabodetabek, pengguna e-commerce..." class="mt-1 block w-full px-3 py-2 bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500 dark:text-white" rows="3"></textarea></div>
+                            <button type="button" onclick="showSourcelinkStep2()" class="w-full bg-sky-500 text-white font-semibold py-3 px-4 rounded-lg hover:bg-sky-600">Lanjutkan ke Penyebaran Kuisioner</button>
+                        </form>
+                    </div>
+                </div>
+                 <div id="sourcelinkStep2" class="hidden">
+                    <header class="flex items-center mb-6"><button onclick="resetSourcelinkPage()" class="text-slate-500 dark:text-slate-400 hover:text-sky-500 mr-4 p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-700"><i data-lucide="arrow-left" class="w-6 h-6"></i></button><h1 class="text-3xl font-bold text-gray-800 dark:text-white">Sebar Kuisioner</h1></header>
+                    <div class="bg-white dark:bg-slate-800 p-8 rounded-xl border dark:border-slate-700">
+                        <form id="sourcelinkLinkForm" onsubmit="event.preventDefault(); submitSourcelink();">
+                            <label class="block text-sm font-medium text-slate-600 dark:text-slate-300">Link Kuisioner Anda</label>
+                            <p class="text-xs text-slate-500 dark:text-slate-400 mb-2">Pastikan link dapat diakses secara publik. Kami mendukung Google Forms, SurveyMonkey, dll.</p>
+                            <input type="url" placeholder="https://docs.google.com/forms/..." required class="mt-1 block w-full px-3 py-2 bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-md shadow-sm focus:outline-none focus:ring-sky-500 focus:border-sky-500 dark:text-white">
+                            <button type="submit" class="mt-6 w-full bg-sky-500 text-white font-semibold py-3 px-4 rounded-lg hover:bg-sky-600">Sebar Kuisioner Sekarang</button>
+                        </form>
+                    </div>
+                </div>
+                <div id="sourcelinkSuccess" class="hidden text-center bg-white dark:bg-slate-800 p-12 rounded-xl border dark:border-slate-700">
+                    <i data-lucide="send" class="w-16 h-16 mx-auto text-green-500 mb-4"></i>
+                    <h2 class="text-2xl font-bold dark:text-white">Kuisioner Diterima!</h2>
+                    <p class="text-slate-500 dark:text-slate-400 mt-2 max-w-xl mx-auto">Kuisioner Anda telah kami terima dan akan segera disebar kepada responden yang sesuai. Anda akan menerima notifikasi melalui email jika target responden telah tercapai.</p>
+                    <button onclick="showPage('berandaPage')" class="mt-6 bg-sky-500 text-white font-semibold py-2 px-6 rounded-lg">Kembali ke Beranda</button>
+                </div>
+            </div>
+
+            <div id="mentorRegisterPage" class="page">
+                 <div id="mentorRegisterSelection">
+                     <h1 class="text-3xl font-bold text-gray-800 dark:text-white mb-2">Daftar Menjadi Mitra Mentor</h1>
+                     <p class="text-slate-500 dark:text-slate-400 mb-6">Pilih kategori yang paling sesuai dengan keahlianmu.</p>
+                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div onclick="showMentorRegisterForm('Consulink')" class="feature-card bg-white dark:bg-slate-800 p-6 rounded-xl text-center cursor-pointer border dark:border-slate-700">
+                            <div class="bg-emerald-100 dark:bg-emerald-900/50 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4"><i data-lucide="messages-square" class="w-10 h-10 text-emerald-500"></i></div>
+                            <h3 class="text-xl font-bold text-blue-800 dark:text-white">Mentor Consulink</h3>
+                            <p class="text-sm text-slate-500 dark:text-slate-400 mt-2">Bimbingan akademik, tugas, ujian, dan kehidupan kampus.</p>
+                            <p class="text-xs font-semibold text-sky-600 dark:text-sky-400 mt-2">Syarat: Minimal semester 5</p>
+                        </div>
+                        <div onclick="showMentorRegisterForm('Paperlink')" class="feature-card bg-white dark:bg-slate-800 p-6 rounded-xl text-center cursor-pointer border dark:border-slate-700">
+                            <div class="bg-violet-100 dark:bg-violet-900/50 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4"><i data-lucide="file-text" class="w-10 h-10 text-violet-500"></i></div>
+                            <h3 class="text-xl font-bold text-blue-800 dark:text-white">Mentor Paperlink</h3>
+                            <p class="text-sm text-slate-500 dark:text-slate-400 mt-2">Bimbingan karya tulis ilmiah, metodologi, analisis data, dan publikasi.</p>
+                             <p class="text-xs font-semibold text-sky-600 dark:text-sky-400 mt-2">Syarat: Minimal S1</p>
+                        </div>
+                        <div onclick="showMentorRegisterForm('Courselink')" class="feature-card bg-white dark:bg-slate-800 p-6 rounded-xl text-center cursor-pointer border dark:border-slate-700">
+                            <div class="bg-amber-100 dark:bg-amber-900/50 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4"><i data-lucide="book-open" class="w-10 h-10 text-amber-500"></i></div>
+                            <h3 class="text-xl font-bold text-blue-800 dark:text-white">Mentor Courselink</h3>
+                            <p class="text-sm text-slate-500 dark:text-slate-400 mt-2">Les privat atau kolektif untuk mata kuliah spesifik.</p>
+                            <p class="text-xs font-semibold text-sky-600 dark:text-sky-400 mt-2">Syarat: Minimal semester 5</p>
+                        </div>
+                        <div onclick="showMentorRegisterForm('Complink')" class="feature-card bg-white dark:bg-slate-800 p-6 rounded-xl text-center cursor-pointer border dark:border-slate-700">
+                            <div class="bg-rose-100 dark:bg-rose-900/50 rounded-full w-20 h-20 flex items-center justify-center mx-auto mb-4"><i data-lucide="trophy" class="w-10 h-10 text-rose-500"></i></div>
+                            <h3 class="text-xl font-bold text-blue-800 dark:text-white">Mentor Complink</h3>
+                             <p class="text-sm text-slate-500 dark:text-slate-400 mt-2">Mentoring persiapan berbagai macam lomba akademik.</p>
+                             <p class="text-xs font-semibold text-sky-600 dark:text-sky-400 mt-2">Syarat: Minimal semester 5</p>
+                        </div>
+                     </div>
+                 </div>
+
+                <div id="mentorRegisterFormContainer" class="hidden">
+                    <header class="flex items-center mb-6">
+                        <button onclick="showMentorRegisterSelection()" class="text-slate-500 dark:text-slate-400 hover:text-sky-500 mr-4 p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-700"><i data-lucide="arrow-left" class="w-6 h-6"></i></button>
+                        <h1 id="mentorRegisterFormTitle" class="text-3xl font-bold text-gray-800 dark:text-white">Formulir Pendaftaran Mentor</h1>
+                    </header>
+                    <div class="bg-white dark:bg-slate-800 border dark:border-slate-700 p-8 rounded-xl">
+                        <form onsubmit="event.preventDefault(); submitMentorForm()" class="space-y-6">
+                             <p class="text-sm text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-700 p-4 rounded-lg">Lengkapi data dirimu dengan benar. Tim kami akan meninjau pendaftaranmu dan memberikan status pendaftaran melalui email.</p>
+                            <div class="grid md:grid-cols-2 gap-6">
+                                <div><label class="block text-sm font-medium text-slate-700 dark:text-slate-300">Nama Lengkap</label><input type="text" required class="mt-1 w-full px-3 py-2 bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-md dark:text-white"></div>
+                                <div><label class="block text-sm font-medium text-slate-700 dark:text-slate-300">Email</label><input type="email" required class="mt-1 w-full px-3 py-2 bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-md dark:text-white"></div>
+                                <div><label class="block text-sm font-medium text-slate-700 dark:text-slate-300">Asal Universitas</label><input type="text" required class="mt-1 w-full px-3 py-2 bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-md dark:text-white"></div>
+                                <div><label class="block text-sm font-medium text-slate-700 dark:text-slate-300">Jurusan</label><input type="text" required class="mt-1 w-full px-3 py-2 bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-md dark:text-white"></div>
+                            </div>
+                            <div><label class="block text-sm font-medium text-slate-700 dark:text-slate-300">Link Portofolio (LinkedIn, Google Drive, dll)</label><input type="url" placeholder="https://..." required class="mt-1 w-full px-3 py-2 bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-md dark:text-white"></div>
+                             <div><label class="block text-sm font-medium text-slate-700 dark:text-slate-300">Unggah CV (PDF, maks 2MB)</label><input type="file" accept=".pdf" required class="mt-1 block w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-sky-50 dark:file:bg-slate-600 file:text-sky-700 dark:file:text-sky-300 hover:file:bg-sky-100 dark:hover:file:bg-slate-500"/></div>
+                            <div class="pt-4">
+                                <button type="submit" class="w-full bg-sky-500 text-white font-semibold py-3 rounded-lg hover:bg-sky-600">Kirim Pendaftaran</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+                <div id="mentorRegisterSuccess" class="hidden text-center bg-white dark:bg-slate-800 p-12 rounded-xl border dark:border-slate-700">
+                    <i data-lucide="check-circle-2" class="w-16 h-16 mx-auto text-green-500 mb-4"></i>
+                    <h2 class="text-2xl font-bold dark:text-white">Pendaftaran Terkirim!</h2>
+                    <p class="text-slate-500 dark:text-slate-400 mt-2 max-w-xl mx-auto">Pendaftaran mitra mentor telah kami terima. Tim EDULINK akan meninjau datamu dan menghubungimu segera melalui email untuk memberikan status pendaftaran.</p>
+                    <button onclick="showPage('berandaPage')" class="mt-6 bg-sky-500 text-white font-semibold py-2 px-6 rounded-lg">Kembali ke Beranda</button>
+                </div>
+            </div>
+            
+             <div id="mentorDashboardPage" class="page">
+                <h1 class="text-3xl font-bold text-gray-800 dark:text-white mb-6">Dashboard Mentor</h1>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                    <div class="bg-white dark:bg-slate-800 p-6 rounded-xl border dark:border-slate-700 flex items-center gap-4">
+                        <div class="bg-blue-100 dark:bg-blue-900/50 p-3 rounded-full"><i data-lucide="users" class="w-8 h-8 text-blue-500"></i></div>
+                        <div><p class="text-sm text-slate-500 dark:text-slate-400">Total Sesi Bulan Ini</p><p class="text-2xl font-bold dark:text-white">57</p></div>
+                    </div>
+                     <div class="bg-white dark:bg-slate-800 p-6 rounded-xl border dark:border-slate-700 flex items-center gap-4">
+                        <div class="bg-amber-100 dark:bg-amber-900/50 p-3 rounded-full"><i data-lucide="star" class="w-8 h-8 text-amber-500"></i></div>
+                        <div><p class="text-sm text-slate-500 dark:text-slate-400">Rating Rata-Rata</p><p class="text-2xl font-bold dark:text-white">4.9 / 5.0</p></div>
+                    </div>
+                     <div class="bg-white dark:bg-slate-800 p-6 rounded-xl border dark:border-slate-700 flex items-center gap-4">
+                        <div class="bg-green-100 dark:bg-green-900/50 p-3 rounded-full"><i data-lucide="dollar-sign" class="w-8 h-8 text-green-500"></i></div>
+                        <div><p class="text-sm text-slate-500 dark:text-slate-400">Pendapatan Bulan Ini</p><p class="text-2xl font-bold dark:text-white">Rp 832.000</p></div>
+                    </div>
+                </div>
+                <div class="bg-white dark:bg-slate-800 p-6 rounded-xl border dark:border-slate-700">
+                    <h2 class="text-xl font-bold dark:text-white mb-4">Sesi Mendatang</h2>
+                    <div class="space-y-3">
+                        <div class="bg-slate-50 dark:bg-slate-700 p-4 rounded-lg flex justify-between items-center">
+                            <div><p class="font-semibold dark:text-white">Budi (Courselink: Kalkulus)</p><p class="text-sm text-slate-500 dark:text-slate-400">25 September 2025, 14:00 WIB</p></div>
+                            <a href="#" class="text-sm font-semibold text-sky-600 dark:text-sky-400">Lihat Detail</a>
+                        </div>
+                        <div class="bg-slate-50 dark:bg-slate-700 p-4 rounded-lg flex justify-between items-center">
+                            <div><p class="font-semibold dark:text-white">Sari (Paperlink: Bimbingan Penulisan)</p><p class="text-sm text-slate-500 dark:text-slate-400">26 September 2025, 10:00 WIB</p></div>
+                            <a href="#" class="text-sm font-semibold text-sky-600 dark:text-sky-400">Lihat Detail</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="faqPage" class="page">
+                 <h1 class="text-3xl font-bold text-gray-800 dark:text-white mb-6">Pusat Bantuan (FAQ)</h1>
+                <div class="bg-white dark:bg-slate-800 p-6 rounded-xl border dark:border-slate-700 divide-y dark:divide-slate-700">
+                    <a href="#" onclick="showPage('csChatPage')" class="block py-4 font-semibold cursor-pointer hover:text-sky-500 dark:text-slate-300 dark:hover:text-sky-400">Bagaimana cara memesan layanan mentor?</a>
+                    <a href="#" onclick="showPage('csChatPage')" class="block py-4 font-semibold cursor-pointer hover:text-sky-500 dark:text-slate-300 dark:hover:text-sky-400">Apa saja metode pembayaran yang tersedia?</a>
+                    <a href="#" onclick="showPage('csChatPage')" class="block py-4 font-semibold cursor-pointer hover:text-sky-500 dark:text-slate-300 dark:hover:text-sky-400">Bagaimana jika saya tidak puas dengan mentor?</a>
+                    <a href="#" onclick="showPage('csChatPage')" class="block py-4 font-semibold cursor-pointer hover:text-sky-500 dark:text-slate-300 dark:hover:text-sky-400">Apakah saya bisa mengubah jadwal sesi?</a>
+                    <a href="#" onclick="showPage('csChatPage')" class="block py-4 font-semibold cursor-pointer hover:text-sky-500 dark:text-slate-300 dark:hover:text-sky-400">Saya memiliki kendala pada transaksi.</a>
+                     <a href="#" onclick="showPage('csChatPage')" class="block py-4 font-semibold cursor-pointer hover:text-sky-500 dark:text-slate-300 dark:hover:text-sky-400">Bagaimana cara menjadi mentor di EDULINK?</a>
+                    <a href="#" onclick="showPage('csChatPage')" class="block py-4 font-semibold cursor-pointer hover:text-sky-500 dark:text-slate-300 dark:hover:text-sky-400">Saya ingin mengajukan keluhan lain.</a>
+                </div>
+            </div>
+            
+            <div id="featurePage" class="page p-8">
+                 <header class="flex items-center mb-6 max-w-6xl mx-auto"><button onclick="showPage('berandaPage')" class="text-slate-500 dark:text-slate-400 hover:text-sky-500 mr-4 p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-700"><i data-lucide="arrow-left" class="w-6 h-6"></i></button><h1 id="featureTitle" class="text-3xl font-bold text-gray-800 dark:text-white"></h1></header>
+                <div class="w-full max-w-6xl mx-auto">
+                    <div id="featureFormContainer" class="bg-white dark:bg-slate-800 p-8 rounded-xl border dark:border-slate-700 shadow-sm"><h2 class="text-2xl font-bold text-blue-800 dark:text-white mb-6 text-center">Cari Mentor Terbaikmu</h2><form id="featureForm" class="space-y-4"></form><button id="searchMentorBtn" class="mt-6 w-full bg-sky-500 text-white font-semibold py-3 px-4 rounded-lg hover:bg-sky-600 transition-transform hover:scale-[1.02]">Cari Mentor</button></div>
+                    <div id="mentorResults" class="hidden"><h2 class="text-2xl font-bold text-gray-800 dark:text-white mb-4">Hasil Pencarian Mentor</h2><div id="mentorList" class="space-y-4"></div><button onclick="resetFeaturePage()" class="mt-6 w-full bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-200 font-semibold py-2 px-4 rounded-lg hover:bg-slate-300 dark:hover:bg-slate-600">Cari Lagi</button></div>
+                </div>
+            </div>
+
+            <div id="paymentPage" class="page"></div>
+            
+            <div id="promoDetailPage" class="page">
+                 <header class="flex items-center mb-6"><button onclick="showPage('promoPage')" class="text-slate-500 dark:text-slate-400 hover:text-sky-500 mr-4 p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-700"><i data-lucide="arrow-left" class="w-6 h-6"></i></button><h1 class="text-3xl font-bold text-gray-800 dark:text-white">Detail Promo Cashback</h1></header>
+                 <div class="bg-white dark:bg-slate-800 p-8 rounded-xl border dark:border-slate-700">
+                    <h2 class="text-2xl font-bold text-blue-800 dark:text-sky-400">Dapatkan Cashback 10% dengan E-Wallet!</h2>
+                    <p class="text-slate-500 dark:text-slate-400 mt-2 mb-4">Nikmati kemudahan transaksi dan dapatkan keuntungan lebih!</p>
+                    <div class="prose max-w-none dark:prose-invert">
+                        <p><strong>Periode Promo:</strong> 1 - 30 September 2025</p>
+                        <p><strong>Metode Pembayaran:</strong> GoPay, OVO, Dana</p>
+                        <h3 class="font-bold mt-4">Syarat dan Ketentuan:</h3>
+                        <ul>
+                            <li>Promo berlaku untuk semua layanan di EDULINK tanpa minimum transaksi.</li>
+                            <li>Maksimal cashback yang didapat adalah Rp 3.000 per transaksi.</li>
+                            <li>Setiap pengguna dapat menggunakan promo ini sebanyak 3 kali selama periode promo.</li>
+                            <li>Cashback akan diterima maksimal 1x24 jam setelah transaksi berhasil.</li>
+                            <li>Promo tidak dapat digabungkan dengan promo lainnya.</li>
+                        </ul>
+                    </div>
+                 </div>
+            </div>
+
+            <div id="csChatPage" class="page">
+                <header class="flex items-center mb-6"><button onclick="showPage('faqPage')" class="text-slate-500 dark:text-slate-400 hover:text-sky-500 mr-4 p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-700"><i data-lucide="arrow-left" class="w-6 h-6"></i></button><h1 class="text-3xl font-bold text-gray-800 dark:text-white">Customer Service</h1></header>
+                <div class="bg-white dark:bg-slate-800 rounded-xl border dark:border-slate-700 h-[70vh] flex flex-col">
+                    <div class="p-4 border-b dark:border-slate-700 flex items-center"><img src="https://placehold.co/40x40/d1fae5/047857?text=CS" class="rounded-full w-10 h-10 mr-3"><div><p class="font-bold dark:text-white">Customer Service</p><p class="text-xs text-green-500">Online</p></div></div>
+                    <div id="csChatLog" class="flex-grow p-4 space-y-4 overflow-y-auto"><div class="flex justify-start"><div class="bg-slate-100 dark:bg-slate-700 dark:text-slate-200 p-3 rounded-lg max-w-md">Halo! Ada yang bisa kami bantu? Silakan ketik pertanyaan atau keluhanmu di bawah ini.</div></div></div>
+                    <div class="p-4 border-t dark:border-slate-700 flex items-center gap-3"><input id="csChatInput" type="text" placeholder="Ketik pesanmu di sini..." class="w-full px-3 py-2 bg-slate-100 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-md focus:outline-none focus:ring-sky-500 focus:border-sky-500 dark:text-white"><button id="csSendBtn" class="bg-sky-500 text-white p-2 rounded-md"><i data-lucide="send" class="w-5 h-5"></i></button></div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modals and Notifications -->
+    <div id="notification-container" class="fixed top-5 right-5 z-50 space-y-2"></div>
+    <div id="shareModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 hidden z-50" onclick="closeShareModal()">
+        <div class="modal-content bg-white dark:bg-slate-800 w-full max-w-md rounded-2xl shadow-xl p-6 scale-95 opacity-0" onclick="event.stopPropagation()">
+            <h3 class="text-lg font-bold mb-4 dark:text-white">Bagikan Promo Ini!</h3>
+            <div class="flex justify-center gap-4 mb-6">
+                <a href="#" class="p-3 bg-slate-100 dark:bg-slate-700 rounded-full"><i data-lucide="facebook" class="w-6 h-6 text-blue-600"></i></a>
+                <a href="#" class="p-3 bg-slate-100 dark:bg-slate-700 rounded-full"><i data-lucide="twitter" class="w-6 h-6 text-sky-500"></i></a>
+                <a href="#" class="p-3 bg-slate-100 dark:bg-slate-700 rounded-full"><i data-lucide="instagram" class="w-6 h-6 text-pink-500"></i></a>
+                 <a href="#" class="p-3 bg-slate-100 dark:bg-slate-700 rounded-full"><i data-lucide="message-circle" class="w-6 h-6 text-green-500"></i></a>
+            </div>
+            <div class="flex items-center">
+                <input id="shareLink" type="text" readonly value="https://edulink.app/promo/ajakteman" class="w-full px-3 py-2 bg-slate-100 dark:bg-slate-700 border border-slate-300 dark:border-slate-600 rounded-l-md dark:text-white">
+                <button onclick="copyShareLink()" class="bg-sky-500 text-white p-2 rounded-r-md"><i data-lucide="copy" class="w-5 h-5"></i></button>
+            </div>
+        </div>
+    </div>
+    <div id="profileModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 hidden z-50" onclick="closeProfileModal()">
+        <div class="modal-content bg-white dark:bg-slate-800 w-full max-w-2xl max-h-[90vh] rounded-2xl shadow-xl overflow-hidden flex flex-col scale-95 opacity-0" onclick="event.stopPropagation()">
+            <div class="p-4 border-b dark:border-slate-700 flex justify-between items-center bg-slate-50 dark:bg-slate-900"><h2 id="modalProfileTitle" class="text-xl font-bold text-blue-800 dark:text-white">Profil Mentor</h2><button onclick="closeProfileModal()" class="text-slate-400 hover:text-slate-600 p-1 rounded-full"><i data-lucide="x" class="w-6 h-6"></i></button></div>
+            <div id="modalProfileBody" class="p-6 overflow-y-auto dark:text-slate-300"></div>
+        </div>
+    </div>
+
+    
+
+    <script src="script.js" defer></script>
+</body>
+</html>
